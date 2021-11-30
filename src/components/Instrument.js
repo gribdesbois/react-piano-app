@@ -2,6 +2,9 @@ import React, { Fragment, useEffect, useState } from 'react'
 import InstrumentAudio from './InstrumentAudio'
 import getNotesBetween from './getNotesBetween'
 import isAccidentalNote from './isAccidentalNote'
+import { getKeyboardShortcutsForNote } from './getkeyboardShortcutsForNote'
+
+const isRegularKey = (event) => !event.ctrlKey && !event.metaKey && !event.shiftKey;
 
 function Instrument({
   instrumentName, startNote, endNote, renderPianoKey, keyboardMap,
@@ -29,6 +32,8 @@ function Instrument({
     window.addEventListener('keydown', handleKeyDown)
     window.addEventListener('keyup', handleKeyUp)
   }, [])
+
+  const getNoteFromKeyboardKey = (keyboardKey) => keyboardMap[keyboardKey.toUpperCase()]
 
   const handleKeyDown = ($event) => {
     if (isRegularKey($event) && !$event.repeat) {
