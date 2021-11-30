@@ -11,7 +11,7 @@ const NullSoundFontPlayer = {
   }
 }
 
-const AudioPLayer = () => {
+const AudioPlayer = () => {
   // Audio context
   const audiocontext = AudioContext && new AudioContext()
 
@@ -34,4 +34,4 @@ const AudioPLayer = () => {
   }
   return Player
 }
-export default AudioPLayer
+export default AudioPlayer
